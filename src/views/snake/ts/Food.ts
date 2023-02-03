@@ -1,12 +1,16 @@
-export interface Foods {
-  element: HTMLElement,
-  X: number,
-  Y: number,
-  postion: number[],
-  changePostion: () => void
-}
-export class Food implements Foods {
+interface Foods {
   element: HTMLElement;
+  X: number;
+  Y: number;
+  postion: number[];
+  changePostion(): void;
+}
+
+/**
+ * 食物类
+ */
+class Food implements Foods {
+  element: HTMLElement
 
   constructor(element: HTMLElement) {
     this.element = element
@@ -34,3 +38,5 @@ export class Food implements Foods {
     this.element.style.top = randomY + 'px'
   };
 }
+
+export { Food }

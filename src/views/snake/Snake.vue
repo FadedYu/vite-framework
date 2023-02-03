@@ -17,19 +17,23 @@
     </div>
 
     <div class="score-panel">
-      <div>SCORE: 0</div>
-      <div>LEVEL: 1</div>
+      <div>SCORE: {{ scoreboard.score }}</div>
+      <div>LEVEL: {{ scoreboard.level }}</div>
     </div>
   </div>
 
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref } from "vue";
+import { onMounted, reactive, ref } from "vue";
 import { Food } from "./ts/Food";
 
 // 获取food的ref
 const foodRef = ref()
+let scoreboard = reactive({
+  score: 0,
+  level: 1
+})
 
 onMounted(() => {
 
