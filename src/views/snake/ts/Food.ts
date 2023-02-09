@@ -14,23 +14,32 @@ class Food implements Foods {
 
   constructor(element: HTMLElement) {
     this.element = element
+    this.changePostion()
   }
-  // X坐标属性
+  /**
+   * X坐标属性
+   */
   get X(): number {
     return this.element.offsetLeft
   }
 
-  // Y坐标属性
+  /**
+   * Y坐标属性
+   */
   get Y(): number {
     return this.element.offsetTop
   }
 
-  // 坐标[x,y]属性
+  /**
+   * 坐标[x,y]属性
+   */
   get postion(): number[] {
     return [this.element.offsetLeft, this.element.offsetTop]
   }
 
-  // 改变食物位置
+  /**
+   * 改变食物位置
+   */
   changePostion(): void {
     let randomX: number = Math.round(Math.random() * 29) * 10
     let randomY: number = Math.round(Math.random() * 29) * 10
@@ -39,4 +48,4 @@ class Food implements Foods {
   };
 }
 
-export { Food }
+export default Food
