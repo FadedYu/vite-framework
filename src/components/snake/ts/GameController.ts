@@ -1,7 +1,7 @@
 import Snake from "./Snake"
 import Food from "./Food"
 import ScorePanel from "./ScorePanel"
-import EventBus from "../../mitt/EventBus"
+import EventBus from "./EventBus"
 
 
 // 游戏控制器初始化参数
