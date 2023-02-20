@@ -92,15 +92,6 @@ function unique4(arr: any[], key: string): any[] {
   return [...map.values()];
 }
 
-
-
-let b = unique4(demo, 'id')
-console.log(b);
-
-
-
-
-
 </script>
 
 <style lang="less" scoped></style>
