@@ -1,4 +1,4 @@
-import EventBus from "../../../components/mitt/EventBus";
+import EventBus from "../../mitt/EventBus";
 
 interface Position {
   x: number;

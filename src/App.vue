@@ -1,12 +1,10 @@
 <template>
-  <Snake></Snake>
+  <Unique></Unique>
 </template>
 
 <script setup lang="ts">
-import Snake from './views/snake/Snake.vue';
+import Unique from './components/ts数组去重/Unique.vue';
 
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>
