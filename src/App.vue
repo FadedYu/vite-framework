@@ -1,9 +1,17 @@
 <template>
-  <Unique></Unique>
+  <div></div>
 </template>
 
 <script setup lang="ts">
-import Unique from './components/ts数组去重/Unique.vue';
+import { getCurrentInstance } from "vue";
+
+const instance = getCurrentInstance()
+instance?.proxy?.$loading.show()
+
+setTimeout(() => {
+  instance?.proxy?.$loading.hide()
+}, 3000)
+
 
 </script>
 
