@@ -6,7 +6,7 @@ export default {
   install(app: App) {
     const vNode: VNode = createVNode(Loading)
     render(vNode, document.body)
-    app.config.globalProperties.$loading = {
+    app.config.globalProperties.$customLoading = {
       show: vNode.component?.exposed?.show,
       hide: vNode.component?.exposed?.hide
     }

@@ -1,16 +1,12 @@
 <template>
-  <div></div>
+  <el-config-provider :locale="zhCn">
+    <CustomDatePicker></CustomDatePicker>
+  </el-config-provider>
 </template>
 
 <script setup lang="ts">
-import { getCurrentInstance } from "vue";
-
-const instance = getCurrentInstance()
-instance?.proxy?.$loading.show()
-
-setTimeout(() => {
-  instance?.proxy?.$loading.hide()
-}, 3000)
+import { zhCn } from 'element-plus/lib/locale/index'
+import CustomDatePicker from './components/5_elementui/CustomDatePicker.vue';
 
 
 </script>
