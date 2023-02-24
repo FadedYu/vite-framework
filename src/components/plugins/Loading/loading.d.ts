@@ -5,7 +5,7 @@ declare type Lod = {
 
 declare module '@vue/runtime-core' {
   export interface ComponentCustomProperties {
-    $loading: Lod
+    $customLoading: Lod
   }
 }
 

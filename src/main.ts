@@ -7,7 +7,7 @@ import ElementPlus from 'element-plus'
 import 'element-plus/dist/index.css'
 
 // 自定义插件 loading
-import customLoading from './components/4_vue插件/Loading'
+import customLoading from './components/plugins/Loading'
 
 const app = createApp(App)
 app.use(ElementPlus)
