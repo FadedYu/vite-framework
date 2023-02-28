@@ -3,9 +3,6 @@
 </template>
 
 <script setup lang="ts">
-import { type } from 'os';
-
-
 
 interface Demo {
   id: number,

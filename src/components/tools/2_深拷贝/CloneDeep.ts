@@ -42,7 +42,7 @@ function isObject<T>(target: T): boolean {
   return target !== null && (type === 'object' || type === 'function');
 }
 
-function getType<T>(target: T): string {
+function getType(target: any): string {
   return Object.prototype.toString.call(target);
 }
 
@@ -51,7 +51,7 @@ function getInit(target: any): any {
   return new Ctor();
 }
 
-function cloneSymbol<T>(targe: T): T {
+function cloneSymbol(targe: any): any {
   return Object(Symbol.prototype.valueOf.call(targe));
 }
 
@@ -84,7 +84,7 @@ function cloneFunction(func: Function): Function {
   }
 }
 
-function cloneOtherType<T>(targe: T, type: String) {
+function cloneOtherType(targe: any, type: String): any {
   const Ctor = (targe as Object).constructor;
   switch (type) {
     case boolTag:
@@ -109,7 +109,6 @@ function cloneOtherType<T>(targe: T, type: String) {
 }
 
 function clone(target: any, map = new WeakMap()): any {
-
   // 克隆原始类型
   if (!isObject(target)) {
     return target;
@@ -147,7 +146,7 @@ function clone(target: any, map = new WeakMap()): any {
   }
 
   // 克隆对象和数组
-  const keys = type === arrayTag ? undefined : Object.keys(target);
+  const keys = type === arrayTag ? undefined : Reflect.ownKeys(target);
   forEach(keys || target, (value, key) => {
     if (keys) {
       key = value;
@@ -158,59 +157,4 @@ function clone(target: any, map = new WeakMap()): any {
   return cloneTarget;
 }
 
-
-function deepCopy(obj: any, weekMap = new WeakMap()) {
-  let newObj: any = null;
-  // 判断数据类型是否是复杂的数据类型，如果是则调用自己，如果不是则直接赋值即可！
-  // 由于 null 不可以循环但是他的类型又是 object ，所以这个需要对 null 进行判断
-  if (!isObject(obj)) {
-    return obj
-  }
-  // 先从map中查找是否已经拷贝过该对象
-  let cachedObj = weekMap.get(obj);
-  // 如果已经拷贝过，则直接返回缓存中的对象
-  if (cachedObj) {
-    return cachedObj;
-  }
-  // 获取对象的具体类型
-  let type = Object.prototype.toString.call(obj);
-  switch (type) {
-    case '[object Array]':
-      newObj = [];
-      break;
-    case '[object Date]':
-      newObj = new Date(obj.valueOf());
-      break;
-    case '[object RegExp]':
-      newObj = new RegExp(obj.source, obj.flags);
-      break;
-    case '[object Map]':
-      newObj = new Map();
-      for (let [key, value] of obj.entries()) {
-        newObj.set(key, deepCopy(value, weekMap));
-      }
-      break;
-    case '[object Set]':
-      newObj = new Set();
-      for (let value of obj.values()) {
-        newObj.add(deepCopy(value, weekMap));
-      }
-      break;
-    case '[object Function]':
-      newObj = obj;
-      break;
-    default:
-      newObj = {};
-  }
-  // 将新对象和原对象放入map中，建立映射关系
-  weekMap.set(obj, newObj);
-  // 循环obj的每一项，如果里面还有复杂的数据类型的话，则直接利用递归函数再次调用。
-  for (let key in obj) {
-    if (obj.hasOwnProperty(key)) {
-      newObj[key] = deepCopy(obj[key], weekMap);
-    }
-  }
-  return newObj;
-}
-
-export { clone, deepCopy }
+export { clone }
