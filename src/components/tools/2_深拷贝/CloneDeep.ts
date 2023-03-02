@@ -147,9 +147,9 @@ function clone(target: any, map = new WeakMap()): any {
 
   // 克隆对象和数组
   const keys = type === arrayTag ? undefined : Reflect.ownKeys(target);
-  forEach(keys || target, (value, key) => {
-    if (keys) {
-      key = value;
+  forEach(keys ?? target, (value, key) => {
+    if (keys != null) {
+      key = value
     }
     cloneTarget[key] = clone(target[key], map);
   });

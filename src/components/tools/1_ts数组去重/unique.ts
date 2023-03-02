@@ -6,7 +6,7 @@
  */
 function uniqueEvery<T>(arr: T[]): T[] {
   let map = new Map<string, boolean>();
-  let result = new Set<T>();
+  let result = new Set<T>()
 
   for (let i = 0; i < arr.length; i++) {
     let k = JSON.stringify(arr[i]);
