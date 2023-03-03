@@ -5,19 +5,18 @@
  * @returns 去重后返回新对象数组
  */
 function uniqueEvery<T>(arr: T[]): T[] {
-  let map = new Map<string, boolean>();
-  let result = new Set<T>()
+  const map = new Map<string, boolean>()
+  const result = new Set<T>()
 
   for (let i = 0; i < arr.length; i++) {
-    let k = JSON.stringify(arr[i]);
+    const k = JSON.stringify(arr[i])
     if (!map.has(k)) {
-      map.set(k, true);
-      result.add(arr[i]);
+      map.set(k, true)
+      result.add(arr[i])
     }
-
   }
   // set转数组
-  return Array.from(result);
+  return Array.from(result)
 }
 
 /**
@@ -39,12 +38,12 @@ function uniqueByFilter<T>(arr: Array<T>, key: keyof T): T[] {
  * @returns 去重后返回新对象数组
  */
 function uniqueByReduce<T>(arr: T[], key: keyof T): T[] {
-  let hash: { [key: string]: boolean } = {};
+  const hash: { [key: string]: boolean } = {}
 
   return arr.reduce((accum: T[], item: T) => {
-    hash[item[key] as string] ? "" : (hash[item[key] as string] = true, accum.push(item));
-    return accum;
-  }, []);
+    hash[item[key] as string] ? '' : ((hash[item[key] as string] = true), accum.push(item))
+    return accum
+  }, [])
 }
 
 /**
@@ -55,12 +54,12 @@ function uniqueByReduce<T>(arr: T[], key: keyof T): T[] {
  * @returns 去重后返回新对象数组
  */
 function uniqueByMap<T>(arr: T[], key: keyof T): T[] {
-  let map = new Map();
-  for (let i of arr) {
+  const map = new Map()
+  for (const i of arr) {
     if (!map.has(i[key])) {
-      map.set(i[key], i);
+      map.set(i[key], i)
     }
   }
-  return [...map.values()];
+  return [...map.values()]
 }
 export { uniqueEvery, uniqueByFilter, uniqueByReduce, uniqueByMap }
