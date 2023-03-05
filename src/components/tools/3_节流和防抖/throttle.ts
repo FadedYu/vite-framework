@@ -3,9 +3,9 @@
  * @param handle 要节流的函数，回调
  * @param wait 需要节流的毫秒
  * @param immediate 是否立刻执行
- * @returns 
+ * @returns
  */
-function throttle(handle: Function, wait?: (number | boolean), immediate?: boolean) {
+function throttle(handle: () => void, wait?: number | boolean, immediate?: boolean) {
   if (typeof handle !== 'function') throw new Error('handle must be an function')
   if (typeof wait === 'undefined') wait = 1000
   //如果只传入 handle 和 immediate
@@ -16,22 +16,21 @@ function throttle(handle: Function, wait?: (number | boolean), immediate?: boole
   //immediate默认为flase
   if (typeof immediate !== 'boolean') immediate = false
   //定义变量记录上一次执行的时间
-  let previous: number = 0
+  let previous = 0
   let timer: ReturnType<typeof setTimeout> | undefined = undefined
-  return function (this: any, ...args: any[]) {
+  return function (this: unknown, ...args: []) {
     //获取当前时间
-    let now = +new Date()
+    const now = +new Date()
     //如果不立即执行，则interval一直等于wait时间
     if (!immediate) previous = now
     // 计算间隔时间
-    let interval = (wait as number) - (now - previous)
+    const interval = (wait as number) - (now - previous)
     if (interval <= 0) {
       // 说明要立即执行
       clearTimeout(timer)
       timer = undefined
       handle.apply(this, args)
       previous = +new Date()
-
     } else if (!timer && !immediate) {
       // 当我们发现系统中有一个定时器了，就意味着我们不需要再开定时器
       // 此刻就说明这次的操作发生了在我们定义的频次时间范围内，那就不应该执行handle

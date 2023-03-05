@@ -5,7 +5,7 @@
  * @param immediate 是否立即执行，开启后，先执行函数后必须等待防抖时间过后才能再执行函数
  * @returns 返回当前函数
  */
-function debounce(handle: Function, wait?: (number | boolean), immediate?: boolean) {
+function debounce(handle: () => void, wait?: number | boolean, immediate?: boolean) {
   if (typeof handle !== 'function') throw new Error('handle must be an function')
   if (typeof wait === 'undefined') wait = 1000
   // 如果只传入 handle 和 immediate
@@ -17,15 +17,13 @@ function debounce(handle: Function, wait?: (number | boolean), immediate?: boole
   if (typeof immediate !== 'boolean') immediate = false
   // 防抖
   let timer: ReturnType<typeof setTimeout> | undefined = undefined
-  return function (this: any, ...args: any[]) {
-    let init = immediate && !timer
+  return function (this: unknown, ...args: []) {
+    const init = immediate && !timer
     clearTimeout(timer)
     timer = setTimeout(() => {
-      console.log('开启settimeout');
-
       timer = undefined
       !immediate ? handle.apply(this, args) : null
-    }, (wait as number))
+    }, wait as number)
     // 如果立即执行
     init ? handle.apply(this, args) : null
   }
