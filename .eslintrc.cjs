@@ -19,6 +19,7 @@ module.exports = {
   },
   plugins: ['vue', '@typescript-eslint', 'prettier'],
   rules: {
+    'no-unused-vars': ['error', { varsIgnorePattern: '.*', args: 'none' }],
     'prettier/prettier': 'error',
     'arrow-body-style': 'off',
     'prefer-arrow-callback': 'off'
