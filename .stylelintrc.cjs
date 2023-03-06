@@ -1,12 +1,12 @@
 module.exports = {
   extends: ['stylelint-config-standard', 'stylelint-config-recommended-less', 'stylelint-config-standard-vue'],
   overrides: [
-    {
-      files: ['*.vue', '**/*.vue'],
-      rules: {
-        'unit-allowed-list': ['em', 'rem', 's']
-      }
-    }
+    // {
+    //   files: ['*.vue', '**/*.vue'],
+    //   rules: {
+    //     'unit-allowed-list': ['em', 'rem', 's']
+    //   }
+    // }
   ],
   plugins: ['stylelint-order'],
   ignoreFiles: ['**/*.js', '**/*.jsx', '**/*.tsx', '**/*.ts', '**/*.json', '**/*.md', '**/*.yaml'],

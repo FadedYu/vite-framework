@@ -18,6 +18,16 @@ module.exports = {
     sourceType: 'module'
   },
   plugins: ['vue', '@typescript-eslint', 'prettier'],
+  overrides: [
+    {
+      // 匹配views和二级目录中的index.vue
+      files: ['src/views/index.vue', 'src/views/**/index.vue', 'src/components/**/index.vue'],
+      rules: {
+        //给上面匹配的文件指定规则
+        'vue/multi-word-component-names': 'off'
+      }
+    }
+  ],
   rules: {
     'no-unused-vars': ['error', { varsIgnorePattern: '.*', args: 'none' }],
     'prettier/prettier': 'error',
