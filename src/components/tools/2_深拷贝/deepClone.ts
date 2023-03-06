@@ -6,14 +6,27 @@ const dateTag = '[object Date]'
 const errorTag = '[object Error]'
 const regexpTag = '[object RegExp]'
 
+/**
+ * 是否为object
+ * @param data 源数据
+ */
 function isObject<T>(data: T) {
   return (typeof data === 'object' && data) || typeof data === 'function'
 }
 
+/**
+ * 获取数据的类型
+ * @param data 源数据
+ */
 function getType<T>(data: T): string {
   return Object.prototype.toString.call(data)
 }
 
+/**
+ * 深拷贝
+ * @param data 源数据
+ * @param map WeakMap储存遍历过的拷贝数据，解决循环引用问题
+ */
 function deepClone<T>(data: T, map = new WeakMap()) {
   if (!isObject(data)) {
     return data

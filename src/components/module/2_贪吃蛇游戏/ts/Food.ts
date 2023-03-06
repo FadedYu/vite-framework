@@ -1,9 +1,9 @@
 interface Foods {
-  element: HTMLElement;
-  X: number;
-  Y: number;
-  postion: number[];
-  changePostion(): void;
+  element: HTMLElement
+  X: number
+  Y: number
+  postion: number[]
+  changePostion(): void
 }
 
 /**
@@ -41,11 +41,11 @@ class Food implements Foods {
    * 改变食物位置
    */
   changePostion(): void {
-    let randomX: number = Math.round(Math.random() * 29) * 10
-    let randomY: number = Math.round(Math.random() * 29) * 10
+    const randomX: number = Math.round(Math.random() * 29) * 10
+    const randomY: number = Math.round(Math.random() * 29) * 10
     this.element.style.left = randomX + 'px'
     this.element.style.top = randomY + 'px'
-  };
+  }
 }
 
 export default Food

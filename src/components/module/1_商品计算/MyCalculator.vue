@@ -1,25 +1,25 @@
 <template>
   <div>
-    <table border="true" style="width: 800px;text-align: center;">
+    <table border="true" style="width: 800px; text-align: center">
       <thead>
         <tr>
-          <td> 商品 </td>
-          <td> 数量 </td>
-          <td> 单价 </td>
-          <td> 价格 </td>
-          <td> 操作 </td>
+          <td>商品</td>
+          <td>数量</td>
+          <td>单价</td>
+          <td>价格</td>
+          <td>操作</td>
         </tr>
       </thead>
       <tbody>
         <tr v-for="(item, index) in shop" :key="index">
-          <td> {{ item.name }} </td>
+          <td>{{ item.name }}</td>
           <td>
-            <button @click="addAndSum(item, false)"> - </button>
+            <button @click="addAndSum(item, false)">-</button>
             {{ item.num }}
-            <button @click="addAndSum(item, true)"> + </button>
+            <button @click="addAndSum(item, true)">+</button>
           </td>
-          <td> {{ item.price }} </td>
-          <td> {{ item.num * item.price }} </td>
+          <td>{{ item.price }}</td>
+          <td>{{ item.num * item.price }}</td>
           <td><button @click="remove(index)">删除</button></td>
         </tr>
       </tbody>
@@ -35,12 +35,11 @@
 </template>
 
 <script setup lang="ts">
-import { computed, reactive } from 'vue';
-
+import { computed, reactive } from 'vue'
 
 type Shop = {
-  name: string,
-  num: number,
+  name: string
+  num: number
   price: number
 }
 const shop = reactive<Shop[]>([
@@ -82,12 +81,9 @@ const remove = (index: number): void => {
 
 let total = computed<number>(() => {
   return shop.reduce((pre, next) => {
-    return pre + (next.num * next.price)
+    return pre + next.num * next.price
   }, 0)
 })
-
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

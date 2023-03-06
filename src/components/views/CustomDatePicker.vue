@@ -6,7 +6,7 @@
 
 <script setup lang="ts">
 import 'dayjs/locale/zh-cn'
-import { ref } from 'vue';
+import { ref } from 'vue'
 
 const value1 = ref('')
 </script>

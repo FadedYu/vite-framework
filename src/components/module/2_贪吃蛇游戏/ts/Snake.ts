@@ -1,20 +1,19 @@
-import EventBus from "./EventBus";
+import EventBus from './EventBus'
 
 interface Position {
-  x: number;
-  y: number;
+  x: number
+  y: number
 }
 
 /**
  * 蛇
  */
 class Snake {
-
   // 蛇组成Dom节点
-  element: HTMLElement;
-  head: HTMLElement;
-  bodies: HTMLElement[];
-  bodiesPosition: Position[] = [];
+  element: HTMLElement
+  head: HTMLElement
+  bodies: HTMLElement[]
+  bodiesPosition: Position[] = []
 
   constructor(element: HTMLElement) {
     this.element = element
@@ -27,13 +26,6 @@ class Snake {
    */
   get X(): number {
     return this.head.offsetLeft
-  }
-
-  /**
-   * 获取蛇头Y坐标
-   */
-  get Y(): number {
-    return this.head.offsetTop
   }
 
   /**
@@ -52,6 +44,13 @@ class Snake {
     this.moveBody()
     this.head.style.left = value + 'px'
     this.checkHitBody()
+  }
+
+  /**
+   * 获取蛇头Y坐标
+   */
+  get Y(): number {
+    return this.head.offsetTop
   }
 
   /**
@@ -92,7 +91,7 @@ class Snake {
    * 添加蛇身
    */
   addBody(): void {
-    let el = this.element.appendChild(document.createElement('div'))
+    const el = this.element.appendChild(document.createElement('div'))
     el.style.left = this.X + 'px'
     el.style.top = this.Y + 'px'
     this.bodies.push(el)
@@ -103,7 +102,6 @@ class Snake {
    * @param direction 方向按键事件
    */
   move(direction: string): void {
-
     let x = this.X
     let y = this.Y
     switch (direction) {
@@ -111,22 +109,22 @@ class Snake {
       case 'Up':
         // 蛇向上移动10
         y -= 10
-        break;
+        break
       case 'ArrowDown':
       case 'Down':
         // 蛇向下移动10
         y += 10
-        break;
+        break
       case 'ArrowLeft':
       case 'Left':
         // 蛇向左移动10
         x -= 10
-        break;
+        break
       case 'ArrowRight':
       case 'Right':
         // 蛇向右移动10
         x += 10
-        break;
+        break
     }
     this.X = x
     this.Y = y
@@ -137,10 +135,10 @@ class Snake {
    */
   moveBody(): void {
     for (let i = this.bodies.length - 1; i > 0; i--) {
-      let x = this.bodies[i - 1].offsetLeft;
-      let y = this.bodies[i - 1].offsetTop;
-      this.bodies[i].style.left = x + 'px';
-      this.bodies[i].style.top = y + 'px';
+      const x = this.bodies[i - 1].offsetLeft
+      const y = this.bodies[i - 1].offsetTop
+      this.bodies[i].style.left = x + 'px'
+      this.bodies[i].style.top = y + 'px'
     }
   }
 
@@ -155,7 +153,6 @@ class Snake {
       }
     }
   }
-
 }
 
 export default Snake

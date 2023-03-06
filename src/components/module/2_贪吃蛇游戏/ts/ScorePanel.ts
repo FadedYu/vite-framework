@@ -2,24 +2,24 @@
  * 计分盘
  */
 interface Score {
-  addScore(): void;
-  levelUP(): void;
-  reset(): void;
+  addScore(): void
+  levelUP(): void
+  reset(): void
 }
 
 interface ScoreRulesType {
-  maxLevel: number;
-  upScore?: number;
+  maxLevel: number
+  upScore?: number
 }
 
 /**
  * 记分牌
  */
 class ScorePanel implements Score {
-  private _score: number = 0;
-  private _level: number = 1;
-  private _maxLevel: number;
-  private _upScore: number;
+  private _score = 0
+  private _level = 1
+  private _maxLevel: number
+  private _upScore: number
 
   constructor(scoreRulesType?: ScoreRulesType) {
     this._maxLevel = scoreRulesType?.maxLevel ?? 5
@@ -75,8 +75,6 @@ class ScorePanel implements Score {
     this._score = 0
     this._level = 1
   }
-
 }
-
 
 export default ScorePanel

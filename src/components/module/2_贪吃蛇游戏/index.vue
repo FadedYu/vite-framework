@@ -2,7 +2,6 @@
   <div ref="panel" class="snake-container">
     <div class="stage-panel">
       <div class="stage">
-
         <div ref="snakeRef" class="snake">
           <div></div>
         </div>
@@ -13,7 +12,6 @@
           <div></div>
           <div></div>
         </div>
-
       </div>
 
       <div class="status">
@@ -21,19 +19,17 @@
       </div>
     </div>
 
-
     <div class="score-panel">
       <div>SCORE: {{ scoreboard.score }}</div>
       <div>LEVEL: {{ scoreboard.level }}</div>
     </div>
   </div>
-
 </template>
 
 <script setup lang="ts">
-import { onMounted, reactive, ref } from "vue";
+import { onMounted, reactive, ref } from 'vue'
 
-import GameController from "./ts/GameController";
+import GameController from './ts/GameController'
 
 // 获取food的ref
 const foodRef = ref()
@@ -46,8 +42,7 @@ let scoreboard = reactive({
 })
 
 onMounted(() => {
-
-  const game = new GameController({
+  new GameController({
     snakeEl: snakeRef.value,
     foodEl: foodRef.value,
     // 传递具有响应式的对象给控制器，以便在界面上同步显示
@@ -56,35 +51,31 @@ onMounted(() => {
     maxLevel: 5,
     upScore: 1
   })
-
 })
-
-
-
 </script>
 
 <style lang="less" scoped>
 @bg-color: #b7d4a8;
 
 .snake-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 100px auto;
   width: 360px;
   height: 420px;
-  margin: 100px auto;
   background-color: @bg-color;
-  box-sizing: border-box;
   border: 10px solid black;
   border-radius: 30px;
-  display: flex;
+  box-sizing: border-box;
   flex-direction: column;
-  align-items: center;
-  justify-content: space-around;
-  font: bold 20px "Courier";
+  font: bold 20px Courier, sans-serif;
 
   .stage-panel {
     display: flex;
-    flex-direction: column;
-    align-items: center;
     justify-content: center;
+    align-items: center;
+    flex-direction: column;
 
     .stage {
       position: relative;
@@ -93,7 +84,7 @@ onMounted(() => {
       border: 2px solid black;
 
       /deep/.snake {
-        &>div {
+        & > div {
           position: absolute;
           width: 10px;
           height: 10px;
@@ -104,15 +95,15 @@ onMounted(() => {
 
       .food {
         position: absolute;
+        display: flex;
+        justify-content: space-around;
         width: 10px;
         height: 10px;
-        display: flex;
+        border: 1px solid transparent;
         flex-flow: row wrap;
         align-content: space-around;
-        justify-content: space-around;
-        border: 1px solid transparent;
 
-        &>div {
+        & > div {
           width: 4px;
           height: 4px;
           background-color: black;
@@ -123,16 +114,16 @@ onMounted(() => {
 
     .status {
       margin-top: 10px;
-      font-size: 14px;
       height: 20px;
+      font-size: 14px;
     }
   }
 
   .score-panel {
-    width: 300px;
     display: flex;
-    align-items: center;
     justify-content: space-between;
+    align-items: center;
+    width: 300px;
   }
 }
 </style>
