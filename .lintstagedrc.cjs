@@ -1,10 +1,9 @@
+/**
+ * 提交代码前，对所提交的代码进行代码规范校验
+ */
 module.exports = {
-  // 只校验eslint，不自动修复
-  // "*.{js,ts,vue}": "eslint",
-
-  // eslint自动修复lint问题。
-  '*.{js,ts,vue,jsx,tsx}': 'eslint --fix',
-
-  // 启动stylelint校验，并自动修复
-  '*.{vue,css,less,html}': 'stylelint --fix'
+  '*.{js,jsx,ts,tsx}': ['eslint  --fix', 'prettier --write'],
+  '*.md': ['prettier --write'],
+  '*.{scss,less,styl,html}': ['stylelint --fix', 'prettier --write'],
+  '*.vue': ['eslint --fix', 'prettier --write', 'stylelint --fix']
 }
