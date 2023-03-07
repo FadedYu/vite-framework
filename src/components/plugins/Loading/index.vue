@@ -21,8 +21,8 @@ defineExpose({
 .loading {
   box-sizing: border-box;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   height: 100vh;
   font-size: 30px;
   color: white;

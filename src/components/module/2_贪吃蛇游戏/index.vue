@@ -58,24 +58,24 @@ onMounted(() => {
 @bg-color: #b7d4a8;
 
 .snake-container {
+  box-sizing: border-box;
   display: flex;
-  justify-content: space-around;
+  flex-direction: column;
   align-items: center;
-  margin: 100px auto;
+  justify-content: space-around;
   width: 360px;
   height: 420px;
+  margin: 100px auto;
+  font: bold 20px Courier, sans-serif;
   background-color: @bg-color;
   border: 10px solid black;
   border-radius: 30px;
-  box-sizing: border-box;
-  flex-direction: column;
-  font: bold 20px Courier, sans-serif;
 
   .stage-panel {
     display: flex;
-    justify-content: center;
-    align-items: center;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
 
     .stage {
       position: relative;
@@ -96,12 +96,12 @@ onMounted(() => {
       .food {
         position: absolute;
         display: flex;
+        flex-flow: row wrap;
+        align-content: space-around;
         justify-content: space-around;
         width: 10px;
         height: 10px;
         border: 1px solid transparent;
-        flex-flow: row wrap;
-        align-content: space-around;
 
         & > div {
           width: 4px;
@@ -113,16 +113,16 @@ onMounted(() => {
     }
 
     .status {
-      margin-top: 10px;
       height: 20px;
+      margin-top: 10px;
       font-size: 14px;
     }
   }
 
   .score-panel {
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
     width: 300px;
   }
 }
