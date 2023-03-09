@@ -1,11 +1,6 @@
 module.exports = {
   extends: ['stylelint-config-standard', 'stylelint-config-recess-order', 'stylelint-config-standard-vue'],
-  overrides: [
-    {
-      files: ['**/*.html'],
-      customSyntax: 'postcss-html'
-    }
-  ],
+  customSyntax: 'postcss-html',
   plugins: ['stylelint-order'],
   ignoreFiles: [
     'node_modules/*',
