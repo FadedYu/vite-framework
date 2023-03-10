@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /**
  * 函数节流,n 秒内只运行一次，若在 n 秒内重复触发，只有一次生效
  * @param handle 要节流的函数，回调
@@ -5,7 +6,7 @@
  * @param immediate 是否立刻执行
  * @returns
  */
-function throttle(handle: () => void, wait?: number | boolean, immediate?: boolean) {
+function throttle(handle: (...args: any[]) => void, wait?: number | boolean, immediate?: boolean) {
   if (typeof handle !== 'function') throw new Error('handle must be an function')
   if (typeof wait === 'undefined') wait = 1000
   //如果只传入 handle 和 immediate
@@ -18,7 +19,7 @@ function throttle(handle: () => void, wait?: number | boolean, immediate?: boole
   //定义变量记录上一次执行的时间
   let previous = 0
   let timer: ReturnType<typeof setTimeout> | undefined = undefined
-  return function (this: unknown, ...args: []) {
+  return function (this: any, ...args: any[]) {
     //获取当前时间
     const now = +new Date()
     //如果不立即执行，则interval一直等于wait时间
