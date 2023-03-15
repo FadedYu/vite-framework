@@ -7,7 +7,6 @@ logs
 node_modules
 dist
 dist-ssr
-test
 build/
 src/assets
 /public
