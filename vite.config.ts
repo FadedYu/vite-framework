@@ -33,7 +33,6 @@ export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
     },
     resolve: {
       alias: {
-        '~': `${resolve(__dirname, './')}`,
         '@/': `${resolve(__dirname, 'src')}/`
       }
     },
