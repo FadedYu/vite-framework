@@ -1,9 +1,9 @@
 const routes = [
   {
     path: '/SnakeGame',
-    component: () => import('@/components/module/2_贪吃蛇游戏/index.vue'),
+    component: () => import('@/components/module/2_贪吃蛇游戏/SnakeGame.vue'),
     meta: {
-      title: '找回密码'
+      title: '贪吃蛇游戏'
     }
   }
 ]
