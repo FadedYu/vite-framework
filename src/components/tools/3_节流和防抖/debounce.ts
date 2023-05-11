@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /**
- * 函数防抖，n 秒内只运行一次，若在 n 秒内重复触发，只有一次生效
+ * 函数防抖，在事件被触发n秒后再执行回调，如果在这n秒内又被触发，则重新计时
  * @param handle 需要防抖的函数，回调
  * @param wait 需要防抖的毫秒
  * @param immediate 是否立即执行，开启后，先执行函数后必须等待防抖时间过后才能再执行函数
@@ -14,15 +14,16 @@ function debounce(handle: (...args: any[]) => void, wait?: number | boolean, imm
     immediate = wait
     wait = 1000
   }
-  //immediate默认为flase
+  // immediate默认为flase
   if (typeof immediate !== 'boolean') immediate = false
   // 防抖
-  let timer: ReturnType<typeof setTimeout> | undefined = undefined
+  let timer: ReturnType<typeof setTimeout> | undefined
   return function (this: any, ...args: any[]) {
     const init = immediate && !timer
+
     clearTimeout(timer)
     timer = setTimeout(() => {
-      !immediate && handle.apply(this, args)
+      !init && handle.apply(this, args)
       timer = undefined
     }, wait as number)
     // 如果立即执行
