@@ -10,9 +10,9 @@
 function fibo(n: number) {
   if (n <= 0) return 0
   if (n <= 1) return 1
-  let sum,
-    a = 0,
-    b = 1
+  let sum
+  let a = 0
+  let b = 1
   for (let i = 2; i <= n; i++) {
     sum = a + b
     a = b
@@ -43,17 +43,17 @@ function countPaths(x: number, y: number): number {
     ways[i] = new Array(y + 1)
   }
 
-  //上方扩展一行，使其值为0
+  // 上方扩展一行，使其值为0
   for (let i = 0; i <= y; i++) {
     ways[0][i] = 0
   }
 
-  //边上扩展一列，使其值为0
+  // 边上扩展一列，使其值为0
   for (let j = 0; j <= x; j++) {
     ways[j][0] = 0
   }
 
-  //设置初始值，起点走法为1，只能一步一步走
+  // 设置初始值，起点走法为1，只能一步一步走
   ways[1][1] = 1
 
   for (let a = 1; a <= x; a++) {
@@ -61,7 +61,7 @@ function countPaths(x: number, y: number): number {
       if (a === 1 && b === 1) {
         continue
       }
-      //套用状态转换方程
+      // 套用状态转换方程
       ways[a][b] = ways[a][b - 1] + ways[a - 1][b]
     }
   }
@@ -89,13 +89,13 @@ function minPathSum(grid: number[][]): number {
     throw new Error('请输入二维数组')
   }
 
-  //新建一个二维数组，用来保存权重的值
+  // 新建一个二维数组，用来保存权重的值
   const sum = new Array(grid.length)
   for (let i = 0; i < grid[0].length; i++) {
     sum[i] = new Array(grid[0].length)
   }
 
-  //起点初始权重确定值
+  // 起点初始权重确定值
   sum[0][0] = grid[0][0]
 
   for (let i = 0; i < grid.length; i++) {
@@ -103,7 +103,7 @@ function minPathSum(grid: number[][]): number {
       if (i === 0 && j === 0) {
         continue
       }
-      //边上的权重处理
+      // 边上的权重处理
       if (i - 1 < 0) {
         sum[i][j] = sum[i][j - 1] + grid[i][j]
       } else if (j - 1 < 0) {
