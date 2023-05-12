@@ -71,7 +71,7 @@ function getType<T>(obj: T): string {
  * @param regex 正则表达式
  *
  */
-function handleRegExp<T extends RegExp>(regex: T) {
+function handleRegExp(regex: RegExp) {
   const { source, flags, lastIndex } = regex
   const re = new RegExp(source, flags)
   re.lastIndex = lastIndex
