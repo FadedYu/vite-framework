@@ -7,36 +7,34 @@
  *
  */
 
-;(function () {
-  function Parent(name, play) {
-    this.name = name
-    this.play = play
-  }
+function Parent(name, play) {
+  this.name = name
+  this.play = play
+}
 
-  Parent.prototype.sayName = function () {
-    return this.name
-  }
-  function Child(type, name, play) {
-    // 第二次调用 Parent3()
-    Parent.call(this, name, play) // 相当于es6 class中constructor的super
-    this.type = type
-  }
+Parent.prototype.sayName = function () {
+  return this.name
+}
+function Child(type, name, play) {
+  // 第二次调用 Parent3()
+  Parent.call(this, name, play) // 相当于es6 class中constructor的super
+  this.type = type
+}
 
-  // 将new Parent() 改成Object.create 方式，就可以减少组合继承中多进行一次构造的过程
-  Child.prototype = Object.create(Parent.prototype)
-  Child.prototype.constructor = Child
+// 将new Parent() 改成Object.create 方式，就可以减少组合继承中多进行一次构造的过程
+Child.prototype = Object.create(Parent.prototype)
+Child.prototype.constructor = Child
 
-  // 子类原型方法，写在Object.create后面，避免被覆盖
-  Child.prototype.eat = function () {
-    return '吃吃吃'
-  }
+// 子类原型方法，写在Object.create后面，避免被覆盖
+Child.prototype.eat = function () {
+  return '吃吃吃'
+}
 
-  let f1 = new Child('child', 'parent', [1, 2, 3])
-  let f2 = new Child('child', 'parent', [1, 2, 3])
-  console.log(f1)
-  console.log(f1.eat()) // 吃吃吃
+let f1 = new Child('child', 'parent', [1, 2, 3])
+let f2 = new Child('child', 'parent', [1, 2, 3])
+console.log(f1)
+console.log(f1.eat()) // 吃吃吃
 
-  f1.play.push(4)
-  console.log(f1.play) // [1, 2, 3, 4]
-  console.log(f2.play) // [1, 2, 3]
-})()
+f1.play.push(4)
+console.log(f1.play) // [1, 2, 3, 4]
+console.log(f2.play) // [1, 2, 3]

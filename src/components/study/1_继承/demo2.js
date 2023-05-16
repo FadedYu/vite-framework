@@ -6,27 +6,25 @@
  * 如此时c2调用sayName() 会报错b2.sayName is not a function
  */
 
-;(function () {
-  function Parent() {
-    this.name = 'parent'
-    this.play = [1, 2, 3]
-  }
+function Parent() {
+  this.name = 'parent'
+  this.play = [1, 2, 3]
+}
 
-  Parent.prototype.sayName = function () {
-    return this.name
-  }
+Parent.prototype.sayName = function () {
+  return this.name
+}
 
-  function Child() {
-    // 重点是这一行
-    Parent.call(this) // call super constructor
-    this.type = 'child'
-  }
+function Child() {
+  // 重点是这一行
+  Parent.call(this) // call super constructor
+  this.type = 'child'
+}
 
-  let b1 = new Child()
-  let b2 = new Child()
-  console.log(b1)
-  b1.play.push(4)
-  console.log('b1', b1.play) // [1, 2, 3, 4]
-  console.log('b2', b2.play) // [1, 2, 3]
-  // console.log(b2.sayName()) // 会报错 b2.sayName is not a function
-})()
+let b1 = new Child()
+let b2 = new Child()
+console.log(b1)
+b1.play.push(4)
+console.log('b1', b1.play) // [1, 2, 3, 4]
+console.log('b2', b2.play) // [1, 2, 3]
+// console.log(b2.sayName()) // 会报错 b2.sayName is not a function

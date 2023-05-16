@@ -10,28 +10,26 @@
  * 3. 父类中私有或者公有的属性方法，最后都会变成子类中公有方法。
  */
 
-;(function () {
-  function Parent() {
-    this.name = 'parent'
-    this.play = [1, 2, 3]
-  }
+function Parent() {
+  this.name = 'parent'
+  this.play = [1, 2, 3]
+}
 
-  Parent.prototype.sayName = function () {
-    return this.name
-  }
+Parent.prototype.sayName = function () {
+  return this.name
+}
 
-  function Child() {
-    this.name = 'child'
-  }
+function Child() {
+  this.name = 'child'
+}
 
-  // 重点是这一行
-  Child.prototype = new Parent()
-  Child.prototype.constrctor = Child // 保证子类构造函数的完整性
+// 重点是这一行
+Child.prototype = new Parent()
+Child.prototype.constrctor = Child // 保证子类构造函数的完整性
 
-  let a1 = new Child()
-  let a2 = new Child()
-  console.log(a1)
-  a1.play.push(4)
-  console.log('a1', a1.play) // [1, 2, 3, 4]
-  console.log('a2', a2.play) // [1, 2, 3, 4]
-})()
+let a1 = new Child()
+let a2 = new Child()
+console.log(a1)
+a1.play.push(4)
+console.log('a1', a1.play) // [1, 2, 3, 4]
+console.log('a2', a2.play) // [1, 2, 3, 4]

@@ -10,34 +10,32 @@
  * 虽然其优缺点和原型式继承一样，但是对于普通对象的继承方式来说，寄生式继承相比于原型式继承，还是在父类基础上添加了更多的方法。
  */
 
-;(function () {
-  /**
-   * 子类的封装函数，通过浅拷贝增强复制的能力，添加一些需要的方法
-   */
-  function child(parent) {
-    let child = Object.create(parent)
+/**
+ * 子类的封装函数，通过浅拷贝增强复制的能力，添加一些需要的方法
+ */
+function child(parent) {
+  let child = Object.create(parent)
 
-    child.type = 'child'
-    // 以某种方式来增强这个对象，解决组合继承中，子类方法会被覆盖的问题
-    child.getFriends = function () {
-      return this.friends
-    }
-    return child
+  child.type = 'child'
+  // 以某种方式来增强这个对象，解决组合继承中，子类方法会被覆盖的问题
+  child.getFriends = function () {
+    return this.friends
   }
+  return child
+}
 
-  let Parent = {
-    name: 'Parent',
-    play: [1, 2, 3],
-    getName: function () {
-      return this.name
-    }
+let Parent = {
+  name: 'Parent',
+  play: [1, 2, 3],
+  getName: function () {
+    return this.name
   }
+}
 
-  let e1 = child(Parent)
-  let e2 = child(Parent)
-  console.log(e1)
+let e1 = child(Parent)
+let e2 = child(Parent)
+console.log(e1)
 
-  e1.play.push(4)
-  console.log('d1', e1.play) // [1, 2, 3, 4]
-  console.log('d2', e2.play) // [1, 2, 3, 4] d1修改属性会影响到d2
-})()
+e1.play.push(4)
+console.log('d1', e1.play) // [1, 2, 3, 4]
+console.log('d2', e2.play) // [1, 2, 3, 4] d1修改属性会影响到d2
