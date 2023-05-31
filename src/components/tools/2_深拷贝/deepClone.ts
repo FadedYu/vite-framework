@@ -57,11 +57,11 @@ const regexpTag = '[object RegExp]'
 const arrayTag = '[object Array]'
 
 /**
- * 是否为object
+ * 是否为object，除去null和function
  * @param obj 源数据
  */
 function isObject<T>(obj: T) {
-  return (typeof obj === 'object' && obj) || typeof obj === 'function'
+  return typeof obj === 'object' && obj
 }
 
 /**
