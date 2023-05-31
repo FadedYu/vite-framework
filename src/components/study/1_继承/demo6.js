@@ -21,7 +21,7 @@ function Child(type, name, play) {
   this.type = type
 }
 
-// 将new Parent() 改成Object.create 方式，就可以减少组合继承中多进行一次构造的过程
+// 将new Parent() 改成Object.create()，继承Parent的prototype，作为Child的prototype的prototype，形成原型链
 Child.prototype = Object.create(Parent.prototype)
 Child.prototype.constructor = Child
 

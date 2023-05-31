@@ -26,6 +26,9 @@ function Child() {
 // 重点是这一行
 Child.prototype = new Parent()
 Child.prototype.constrctor = Child // 保证子类构造函数的完整性
+Child.prototype.eat = function () {
+  return '吃吃吃'
+}
 
 let a1 = new Child()
 let a2 = new Child()

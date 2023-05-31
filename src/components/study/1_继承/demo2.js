@@ -2,8 +2,10 @@
  * 构造函数继承。借助 call调用Parent函数
  *
  * 存在问题：
- * 相比第一种原型链继承方式，父类的引用属性不会被共享，优化了第一种继承方式的弊端，但是只能继承父类的实例属性和方法，不能继承原型属性或者方法。
- * 如此时c2调用sayName() 会报错b2.sayName is not a function
+ * 相比第一种原型链继承方式，父类的引用属性不会被共享，优化了第一种继承方式的弊端，
+ * 但是只能继承父类的实例属性和方法，不能继承父类原型prototype的属性或者方法。
+ *
+ * 例如 c2调用Parent中prototype的sayName() 会报错b2.sayName is not a function
  */
 
 function Parent() {
