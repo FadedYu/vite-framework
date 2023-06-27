@@ -1,17 +1,16 @@
 <template>
-  <el-button @click="doSome">Default</el-button>
+  <div>{{ name }}</div>
+  <br />
+  <el-button @click="buttonClick">修改name</el-button>
 </template>
 
 <script setup lang="ts">
-// import { throttle } from '@/components/tools/3_节流和防抖/throttle'
-import { debounce } from '@/components/tools/3_节流和防抖/debounce'
-const doSome = debounce(
-  e => {
-    console.log(e)
-  },
-  2000,
-  true
-)
+import { ref } from 'vue'
+let name = ref('测试')
+
+let buttonClick = (event: Event) => {
+  console.log(event)
+}
 </script>
 
 <style lang="less" scoped></style>

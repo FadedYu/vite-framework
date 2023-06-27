@@ -6,11 +6,11 @@
     "paths": {
       "@/*": ["src/*"]
     },
-    "target": "ESNext",
-    "useDefineForClassFields": true,
-    "module": "ESNext",
-    "moduleResolution": "Node",
     "strict": true,
+    "target": "ESNext",
+    "module": "ESNext",
+    "useDefineForClassFields": true,
+    "moduleResolution": "Node",
     "jsx": "preserve",
     "resolveJsonModule": true,
     "isolatedModules": true,

@@ -1,4 +1,3 @@
-function foo() {
-  console.log('ss')
-}
-export { foo }
+/* eslint-disable @typescript-eslint/no-unused-vars */
+
+export {}
